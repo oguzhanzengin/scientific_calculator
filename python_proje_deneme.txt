@@ -1,0 +1,139 @@
+from tkinter import *
+import math
+ 
+sonuc = ""
+ 
+def press(number):
+    global sonuc
+    sonuc = sonuc + str(number)
+    equation.set(sonuc)
+    
+
+def log1(number):
+    global sonuc
+    sonuc=str(math.log(float(sonuc)))
+    equation.set(sonuc)
+
+def equalpress():
+    try:
+        global sonuc
+        total = str(eval(sonuc))
+        equation.set(total)
+        sonuc = str(total)
+    except:
+        equation.set(" error ")
+        sonuc = ""
+
+def clear():
+    global sonuc
+    sonuc = ""
+    equation.set("")
+
+def sin1(number):
+    global sonuc
+    sonuc=str(math.sin(float(sonuc)))
+    equation.set(sonuc)
+    
+def cos1(number):
+    global sonuc
+    sonuc=str(math.cos(float(sonuc)))
+    equation.set(sonuc)
+
+def tan1(number):
+    global sonuc
+    sonuc=str(math.tan(float(sonuc)))
+    equation.set(sonuc)
+
+def kok1(number):
+    global sonuc
+    sonuc=str(math.sqrt(float(sonuc)))
+    equation.set(sonuc)
+    
+def fac1(number):
+    global sonuc
+    sonuc=str(math.factorial(float(sonuc)))
+    equation.set(sonuc)
+
+def exp1(number):
+    global sonuc
+    sonuc=str(math.exp(float(sonuc)))
+    equation.set(sonuc)
+
+    
+def x_uzeri_11(number):
+    global sonuc
+    sonuc=str(math.pow(float(sonuc),-1))
+    equation.set(sonuc)
+    
+if __name__ == "__main__":
+    Calculator = Tk()
+    Calculator.title("Scientific Calculator")
+    Calculator.geometry("330x300")
+    equation = IntVar()
+    sonuc_alani = Entry(Calculator, textvariable=equation, bg='#c1ecf4',bd=10, width=15, font=("Lucida Console", 16), justify=RIGHT)    
+    sonuc_alani.grid(columnspan=4, ipadx=70)
+    
+    
+    
+    button1 = Button(Calculator, text=' 1 ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12), command=lambda: press(1))
+    button1.grid(row=2, column=0)
+    button2 = Button(Calculator, text=' 2 ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press(2))
+    button2.grid(row=2, column=1)
+    button3 = Button(Calculator, text=' 3 ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press(3))
+    button3.grid(row=2, column=2)
+    button4 = Button(Calculator, text=' 4 ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press(4))
+    button4.grid(row=3, column=0)
+    button5 = Button(Calculator, text=' 5 ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press(5))
+    button5.grid(row=3, column=1)
+    button6 = Button(Calculator, text=' 6 ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press(6))
+    button6.grid(row=3, column=2)
+    button7 = Button(Calculator, text=' 7 ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press(7))
+    button7.grid(row=4, column=0)
+    button8 = Button(Calculator, text=' 8 ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press(8))
+    button8.grid(row=4, column=1)
+    button9 = Button(Calculator, text=' 9 ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12), command=lambda: press(9))
+    button9.grid(row=4, column=2)
+    button0 = Button(Calculator, text=' 0 ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press(0))
+    button0.grid(row=5, column=0)
+ 
+    plus = Button(Calculator, text=' + ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press("+"))
+    plus.grid(row=2, column=3)
+    minus = Button(Calculator, text=' - ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press("-"))
+    minus.grid(row=3, column=3)
+    multiply = Button(Calculator, text=' * ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press("*"))
+    multiply.grid(row=4, column=3)
+    divide = Button(Calculator, text=' / ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press("/"))
+    divide.grid(row=5, column=3)
+    equal = Button(Calculator, text=' = ',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=equalpress)
+    equal.grid(row=5, column=2)
+    clear = Button(Calculator, text='Clear',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=clear)
+    clear.grid(row=5, column=1)
+    decimal= Button(Calculator, text='.',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press('.'))
+    decimal.grid(row=6, column=0)
+    pi = Button(Calculator, text="π",bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press("3.14159"))
+    pi.grid(row=6, column= 1)
+    e = Button(Calculator, text="e",bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: press("2.71828"))
+    e.grid(row=6, column= 2)
+
+    log = Button(Calculator, text="log",bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command= lambda: log1(equation))
+    log.grid(row=6, column= 3)
+    log10 = Button(Calculator, text="log10",bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: log101(equation))
+    log10.grid(row=7, column= 0)
+    
+    sin = Button(Calculator, text="sin",bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: sin1(equation))
+    sin.grid(row=7, column= 1)  
+    cos = Button(Calculator, text="cos",bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: cos1(equation))
+    cos.grid(row=7, column= 2)   
+    tan = Button(Calculator, text="tan",bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: tan1(equation))
+    tan.grid(row=7, column= 3)  
+    kok = Button(Calculator, text="√¯",bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: kok1(equation))
+    kok.grid(row=8, column= 0) 
+    exp = Button(Calculator, text="exp",bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: exp1(equation))
+    exp.grid(row=8, column= 1) 
+    fac = Button(Calculator, text="x!",bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: fac1(equation))
+    fac.grid(row=8, column= 2)
+    x_uzeri_1 = Button(Calculator, text='x^^-1',bg='#c1ecf4',bd=5, width=5, font=("Lucida Console", 12),command=lambda: x_uzeri_11(equation))
+    x_uzeri_1.grid(row=8, column= 3)
+    
+    
+    Calculator.mainloop()
